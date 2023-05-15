@@ -1,5 +1,4 @@
-import 'package:main/main.dart' as main;
+// Dart Apprentice by Eng. Fady Fawzy
+// Chapter 7: Nullability
 
-void main(List<String> arguments) {
-  print('Hello world: ${main.calculate()}!');
-}
+void main() {}
