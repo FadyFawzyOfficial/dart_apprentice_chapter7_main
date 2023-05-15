@@ -4,8 +4,9 @@
 void main() {
   // Null overview
   whatNullMeans();
+  problemWithNull();
 }
-
+// What null means
 void whatNullMeans() {
   int postalCode = 12345;
 
@@ -16,4 +17,15 @@ void whatNullMeans() {
   //* In versions of Dart prior to 2.12 that line of code worked just fine.
   // However, now it’s no longer allowed. You get the following error:
   // int postalCode = null;
+}
+
+// The problem with null
+void problemWithNull() {
+  bool isPositive(int anInteger) {
+    return !anInteger.isNegative;
+  }
+
+  print(isPositive(3));
+  print(isPositive(-1));
+  print(isPositive(null));
 }
