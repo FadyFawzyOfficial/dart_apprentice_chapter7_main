@@ -5,7 +5,9 @@ void main() {
   // Null overview
   whatNullMeans();
   problemWithNull();
+  nullableVsNonNullable();
 }
+
 // What null means
 void whatNullMeans() {
   int postalCode = 12345;
@@ -28,4 +30,23 @@ void problemWithNull() {
   print(isPositive(3));
   print(isPositive(-1));
   // print(isPositive(null));
+}
+
+// Nullable vs. non-nullable types
+void nullableVsNonNullable() {
+  int myInt = 1;
+  double myDouble = 3.14159265;
+  bool myBool = true;
+  String myString = 'Hello, Dart!';
+  // User myUser = User(id: 42, name: 'Ray');
+
+  // int postalCode = null; // error
+
+  int? age;
+  double? height;
+  String? message;
+
+  print(age);
+  print(height);
+  print(message);
 }
