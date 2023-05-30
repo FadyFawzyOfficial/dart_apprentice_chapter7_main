@@ -16,6 +16,7 @@ void main() {
   nullAssertionOperator();
   nullAwareCascadeOperator();
   nullAwareIndexOperator();
+  initializingNonNullableClassFields();
 }
 
 // What null means
@@ -122,29 +123,72 @@ void nullAssertionOperator() {
 }
 
 void nullAwareCascadeOperator() {
-  User user = User()
-    ..name = 'Fady'
-    ..id = 1;
+  // User user = User()
+  //   ..name = 'Fady'
+  //   ..id = 1;
 
-  print(user);
+  // print(user);
 
-  User? user1;
-  user1
-    ?..name = 'Fady'
-    ..id = 2;
+  // User? user1;
+  // user1
+  //   ?..name = 'Fady'
+  //   ..id = 2;
 
-  String? lengthString = user1?.name?.length.toString();
-  print(user1?.name);
+  // String? lengthString = user1?.name?.length.toString();
+  // print(user1?.name);
 }
 
-class User {
-  int? id;
-  String? name;
-}
+// class User {
+//   int? id;
+//   String? name;
+// }
 
 void nullAwareIndexOperator() {
   List<int>? myList = [1, 2, 3];
   myList = null;
   int? myItem = myList?[2];
   print(myItem);
+}
+
+void initializingNonNullableClassFields() {
+  // final user = User(name: null);
+}
+
+// class User {
+//   String name;
+// }
+
+//! Using initializers
+// class User {
+//   String name = 'anonymous';
+// }
+
+//! Using initializing formals
+// class User {
+//   String name;
+//   User(this.name);
+// }
+
+//! Using an initializer list
+// class User {
+//   String _name;
+//   User(String name) : _name = name;
+// }
+
+//! Using default parameter values
+// class User {
+//   String name;
+//   User([this.name = 'anonymous']);
+// }
+
+//* named parameters
+// class User {
+//   String name;
+//   User({this.name = 'anonymous'});
+// }
+
+//! Required named parameters
+class User {
+  String name;
+  User({required this.name});
 }
