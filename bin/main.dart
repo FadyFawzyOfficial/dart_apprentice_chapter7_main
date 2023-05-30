@@ -11,6 +11,7 @@ void main() {
   handlingNullableTypes();
   typePromotion();
   ifNullOperator();
+  nullAwareAssignmentOperator();
 }
 
 // What null means
@@ -84,4 +85,9 @@ void ifNullOperator() {
   //   text = message;
   // }
   // print(text);
+}
+
+void nullAwareAssignmentOperator() {
+  double? fontSize;
+  fontSize = fontSize ?? 20;
 }
