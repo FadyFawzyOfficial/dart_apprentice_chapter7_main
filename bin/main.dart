@@ -9,6 +9,7 @@ void main() {
 
   // Handling nullable types
   handlingNullableTypes();
+  typePromotion();
 }
 
 // What null means
@@ -57,4 +58,10 @@ void nullableVsNonNullable() {
 void handlingNullableTypes() {
   String? name;
   // print(name.length);
+}
+
+void typePromotion() {
+  String? name;
+  name = 'Fady';
+  print(name.length);
 }
