@@ -17,6 +17,7 @@ void main() {
   nullAwareCascadeOperator();
   nullAwareIndexOperator();
   initializingNonNullableClassFields();
+  nullableInstanceVariables();
 }
 
 // What null means
@@ -188,7 +189,48 @@ void initializingNonNullableClassFields() {
 // }
 
 //! Required named parameters
-class User {
-  String name;
-  User({required this.name});
+// class User {
+//   String name;
+//   User({required this.name});
+// }
+
+void nullableInstanceVariables() {
+  final user = User(name: null);
+
+  bool isLong(String? text) {
+    if (text == null) {
+      return false;
+    }
+    return text.length > 100;
+  }
 }
+
+class User {
+  String? name;
+  User({this.name});
+}
+
+//! No promotion for non-local variables
+// class TextWidget {
+//   String? text;
+//
+//   bool isLong() {
+//     if (text == null) {
+//       return false;
+//     }
+//     // return text.length > 100; // error
+//     return text!.length > 100;
+//   }
+// }
+
+// class TextWidget {
+//   String? text;
+
+//   bool isLong() {
+//     final text = this.text; // shadowing
+//     if (text == null) {
+//       return false;
+//     }
+//     return text.length > 100; // error
+//   }
+// }
