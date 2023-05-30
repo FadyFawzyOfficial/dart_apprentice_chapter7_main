@@ -64,4 +64,11 @@ void typePromotion() {
   String? name;
   name = 'Fady';
   print(name.length);
+
+  bool isPositive(int? anInteger) {
+    if (anInteger == null) 
+      return false;
+    
+    return !anInteger.isNegative;
+  }
 }
