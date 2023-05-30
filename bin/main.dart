@@ -10,6 +10,7 @@ void main() {
   // Handling nullable types
   handlingNullableTypes();
   typePromotion();
+  ifNullOperator();
 }
 
 // What null means
@@ -66,9 +67,21 @@ void typePromotion() {
   print(name.length);
 
   bool isPositive(int? anInteger) {
-    if (anInteger == null) 
-      return false;
-    
+    if (anInteger == null) return false;
     return !anInteger.isNegative;
   }
+}
+
+void ifNullOperator() {
+  String? message;
+  final text = message ?? 'Error';
+  print(text);
+
+  // String text;
+  // if (message == null) {
+  //   text = 'Error';
+  // } else {
+  //   text = message;
+  // }
+  // print(text);
 }
