@@ -18,6 +18,7 @@ void main() {
   nullAwareIndexOperator();
   initializingNonNullableClassFields();
   nullableInstanceVariables();
+  lateKeyword();
 }
 
 // What null means
@@ -195,20 +196,20 @@ void initializingNonNullableClassFields() {
 // }
 
 void nullableInstanceVariables() {
-  final user = User(name: null);
+  // final user = User(name: null);
 
-  bool isLong(String? text) {
-    if (text == null) {
-      return false;
-    }
-    return text.length > 100;
-  }
+  // bool isLong(String? text) {
+  //   if (text == null) {
+  //     return false;
+  //   }
+  //   return text.length > 100;
+  // }
 }
 
-class User {
-  String? name;
-  User({this.name});
-}
+// class User {
+//   String? name;
+//   User({this.name});
+// }
 
 //! No promotion for non-local variables
 // class TextWidget {
@@ -234,3 +235,43 @@ class User {
 //     return text.length > 100; // error
 //   }
 // }
+
+void lateKeyword() {
+  final user = User();
+  print(user.name);
+}
+
+// class User {
+//   final String name;
+//   late final int _secretNumber = _calculateSecret();
+
+//   User(this.name);
+
+//   int _calculateSecret() => name.length + 23;
+// }
+
+// class User {
+//   final String name;
+//   late final int _secretNumber;
+
+//   User(this.name) {
+//     _secretNumber = _calculateSecret();
+//   }
+
+//   int _calculateSecret() => name.length + 23;
+// }
+
+//! Dangers of being late
+//* Dart doesn’t complain at you, because using late means that you’re promising
+//* Dart that you’ll initialize the field before it’s ever used. This moves
+//* checking from compile-time to runtime.
+class User {
+  late String name;
+}
+
+class SomeClass {
+  late String? value = doheavyCalculation();
+  String? doheavyCalculation() {
+    // do heavy calculation
+  }
+}
