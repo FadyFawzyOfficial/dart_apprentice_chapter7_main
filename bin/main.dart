@@ -12,6 +12,7 @@ void main() {
   typePromotion();
   ifNullOperator();
   nullAwareAssignmentOperator();
+  nullAwareAccess();
 }
 
 // What null means
@@ -90,4 +91,10 @@ void ifNullOperator() {
 void nullAwareAssignmentOperator() {
   double? fontSize;
   fontSize = fontSize ?? 20;
+}
+
+void nullAwareAccess() {
+  int? age;
+  print(age?.isNegative);
+  print(age?.toDouble());
 }
