@@ -14,6 +14,7 @@ void main() {
   nullAwareAssignmentOperator();
   nullAwareAccess();
   nullAssertionOperator();
+  nullAwareCascadeOperator();
 }
 
 // What null means
@@ -117,4 +118,25 @@ void nullAssertionOperator() {
   // bool flowerIsBeautiful = isBeautiful('flower') as bool;
   bool flowerIsBeautiful = isBeautiful('flower') ?? true;
   print(flowerIsBeautiful);
+}
+
+void nullAwareCascadeOperator() {
+  User user = User()
+    ..name = 'Fady'
+    ..id = 1;
+
+  print(user);
+
+  User? user1;
+  user1
+    ?..name = 'Fady'
+    ..id = 2;
+
+  String? lengthString = user1?.name?.length.toString();
+  print(user1?.name);
+}
+
+class User {
+  int? id;
+  String? name;
 }
