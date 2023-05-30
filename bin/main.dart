@@ -6,6 +6,9 @@ void main() {
   whatNullMeans();
   problemWithNull();
   nullableVsNonNullable();
+
+  // Handling nullable types
+  handlingNullableTypes();
 }
 
 // What null means
@@ -49,4 +52,9 @@ void nullableVsNonNullable() {
   print(age);
   print(height);
   print(message);
+}
+
+void handlingNullableTypes() {
+  String? name;
+  // print(name.length);
 }
