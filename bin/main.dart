@@ -15,6 +15,7 @@ void main() {
   nullAwareAccess();
   nullAssertionOperator();
   nullAwareCascadeOperator();
+  nullAwareIndexOperator();
 }
 
 // What null means
@@ -139,4 +140,11 @@ void nullAwareCascadeOperator() {
 class User {
   int? id;
   String? name;
+}
+
+void nullAwareIndexOperator() {
+  List<int>? myList = [1, 2, 3];
+  myList = null;
+  int? myItem = myList?[2];
+  print(myItem);
 }
