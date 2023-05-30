@@ -13,6 +13,7 @@ void main() {
   ifNullOperator();
   nullAwareAssignmentOperator();
   nullAwareAccess();
+  nullAssertionOperator();
 }
 
 // What null means
@@ -97,4 +98,23 @@ void nullAwareAccess() {
   int? age;
   print(age?.isNegative);
   print(age?.toDouble());
+}
+
+void nullAssertionOperator() {
+  // String nonNullableString = nullableString!;
+
+  bool? isBeautiful(String? item) {
+    if (item == 'flower') {
+      return true;
+    } else if (item == 'garbage') {
+      return false;
+    }
+    return null;
+  }
+
+  // bool flowerIsBeautiful = isBeautiful('flower');
+  // bool flowerIsBeautiful = isBeautiful('flower')!;
+  // bool flowerIsBeautiful = isBeautiful('flower') as bool;
+  bool flowerIsBeautiful = isBeautiful('flower') ?? true;
+  print(flowerIsBeautiful);
 }
